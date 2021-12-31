@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="screen">
+    <h1 class="text-center pt-4 pb-3">To-do List</h1>
+  
+    <div class="alert alert-danger d-none" role="alert" id="theAlert">
+      Empty item! really!!
+    </div>
+    <form id="theForm" class="p-2">
+      <div class="d-flex py-2">
+        <input id="newItem" type="text" class="form-control me-2" aria-label="new item" aria-describedby="basic-addon2" placeholder="add new items" autocomplete="off" />
+        <button class="btn btn-warning" id="add">Add</button>
+      </div>
+    </form>
+  
+    <ul id="theList"></ul>
+  </main>
+
+  <script src="app.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+</body>
+</html>

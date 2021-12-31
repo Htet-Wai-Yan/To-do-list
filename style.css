@@ -1,0 +1,39 @@
+:root {
+  --primary-color: white;
+  --secondary-color: #1d1e22;
+}
+
+body {
+  background-color: var(--secondary-color);
+  color: #e79a00;
+}
+
+.screen {
+  width: 300px;
+  height: 600px;
+  margin: 20px auto;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  position: relative;
+}
+
+ul {
+  height: 400px;
+  list-style: none;
+  padding: 0 0 0 1em;
+  margin: 1em 0;
+  overflow-y: auto;
+}
+
+/* give alert a positive absolute */
+.alert {
+  position: absolute;
+  width: 90%;
+  /*   top: 420px; */
+  left: 15px;
+  bottom: 0;
+  z-index: 9999;
+}
+.toggleStyle {
+  text-decoration: line-through;
+}
