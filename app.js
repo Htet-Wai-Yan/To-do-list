@@ -1,7 +1,9 @@
-let theForm = document.getElementById("theForm");
-let theList = document.getElementById("theList");
-let theField = document.getElementById("newItem");
-let theAlert = document.getElementById("theAlert");
+let theForm = document.querySelector("#theForm");
+let theList = document.querySelector("#theList");
+let theField = document.querySelector("#newItem");
+let theAlert = document.querySelector("#theAlert");
+
+let deleteBtn = document.querySelector('#deleteBtn');
 
 theForm.addEventListener("submit", (event) => {
   //   disable form default refresh behaviour
@@ -12,9 +14,13 @@ theForm.addEventListener("submit", (event) => {
 function addItem(inputValue) {
   //   the HTML template
   theNewItem = `
-  <li class = "py-2">
-    <input class="form-check-input me-1" type="checkbox" value="" aria-label="..." onchange     ="toggleCheckbox(this)" /> ${inputValue}
-  </li>`;
+    <li class = "my-2">
+      <div>
+        <input class="form-check-input me-1" type="checkbox" onchange="toggleCheckbox(this)" /> ${inputValue}
+      </div>
+      <i class = "fas fa-trash-alt" id = "deleteBtn" onclick = "deleteNote(this)" style = "cursor: pointer"></i>
+    </li>
+  `;
 
   if (theField.value !== "") {
     //   add "where" and "item"
@@ -35,7 +41,10 @@ function addItem(inputValue) {
 
 // toggle css class when the checkbox is toggle
 function toggleCheckbox(click) {
-  click.parentElement.classList.toggle("toggleStyle");
-  //   delete after .5s
-  // setTimeout(() => click.parentElement.remove(), 500);
+  click.parentElement.classList.toggle("checkDone");
+}
+
+// delete items when trash icon is click
+function deleteNote(click) {
+  click.parentElement.remove()
 }
