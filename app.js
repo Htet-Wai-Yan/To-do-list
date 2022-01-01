@@ -1,8 +1,10 @@
+// Global variables
 let theForm = document.querySelector("#theForm");
 let theList = document.querySelector("#theList");
 let theField = document.querySelector("#newItem");
 let theAlert = document.querySelector("#theAlert");
 
+// Submit event
 theForm.addEventListener("submit", (event) => {
   //   disable form default refresh behaviour
   event.preventDefault();
