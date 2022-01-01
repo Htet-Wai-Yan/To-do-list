@@ -3,8 +3,6 @@ let theList = document.querySelector("#theList");
 let theField = document.querySelector("#newItem");
 let theAlert = document.querySelector("#theAlert");
 
-let deleteBtn = document.querySelector('#deleteBtn');
-
 theForm.addEventListener("submit", (event) => {
   //   disable form default refresh behaviour
   event.preventDefault();
