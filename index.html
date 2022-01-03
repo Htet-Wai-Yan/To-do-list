@@ -19,14 +19,20 @@
     <div class="alert alert-danger d-none" role="alert" id="theAlert">
       Empty item! really!!
     </div>
+
     <form id="theForm" class="p-2">
-      <div class="d-flex py-2">
-        <input id="newItem" type="text" class="form-control me-2" aria-label="new item" aria-describedby="basic-addon2" placeholder="Add new items" autocomplete="off" />
+      <div class="d-flex">
+        <div class="form-outline me-1">
+          <input id="newItem" type="text" class="form-control me-2" aria-label="new item" aria-describedby="basic-addon2" autocomplete="off" />
+          <label class="form-label" for="newItem">Add new items</label>
+        </div>
         <button class="btn btn-warning" id="add">Add</button>
       </div>
     </form>
   
-    <ul id="theList"></ul>
+    <ul id="theList">
+      
+    </ul>
   </main>
 
   <script src="app.js"></script>
