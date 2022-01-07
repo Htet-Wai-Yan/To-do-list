@@ -1,6 +1,6 @@
 # To-do-list
 
-This is the javaScript basic exercise and about creating the note taking app using vanilla javaScript.
+This is the javaScript basic exercise applying OOP and MVC concepts using vanilla javaScript.
 
 The app functionalities are : 
 
