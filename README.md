@@ -1,7 +1,6 @@
 # To-do-list
-JavaScript Basic Exercise
 
-This exercise is about creating the note taking app using vanilla javaScript.
+This is the javaScript basic exercise and about creating the note taking app using vanilla javaScript.
 
 The app functionality are : 
 
