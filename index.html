@@ -15,24 +15,29 @@
 <body>
   <main class="screen">
     <h1 class="text-center pt-4 pb-3">To-do List</h1>
-  
-    <div class="alert alert-danger d-none" role="alert" id="theAlert">
-      Empty item! really!!
-    </div>
 
     <form id="theForm" class="p-2">
       <div class="d-flex">
         <div class="form-outline me-1">
-          <input id="newItem" type="text" class="form-control me-2" aria-label="new item" aria-describedby="basic-addon2" autocomplete="off" />
-          <label class="form-label" for="newItem">Add new items</label>
+          <input id="newItem" type="text" class="form-control me-2 p-2" aria-label="new item" aria-describedby="basic-addon2" autocomplete="off" />
+          <label class="form-label" for="newItem">Add new notes</label>
         </div>
-        <button class="btn btn-warning" id="add">Add</button>
+        <button class="btn btn-warning" type="submit" id="add">Add</button>
       </div>
     </form>
+
+    <!-- hidden by default -->
+    <div class="alert alert-warning m-2 d-none" role="alert">
+      Please add the note before submit
+    </div>
   
     <ul id="theList">
-      
+      <!-- Will fill up with js -->
     </ul>
+
+    <button class="btn btn-warning btn-floating fs-4 clearNotes">
+      <i class="fas fa-eraser"></i>
+    </button>
   </main>
 
   <script src="app.js"></script>

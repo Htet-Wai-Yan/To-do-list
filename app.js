@@ -1,61 +1,140 @@
-// Global variables
-let theForm = document.querySelector("#theForm");
-let theList = document.querySelector("#theList");
-let theField = document.querySelector("#newItem");
-let theAlert = document.querySelector("#theAlert");
-
-let notesInLocalStorage = localStorage.getItem('note')
-
-let noteObj = notesInLocalStorage !== null ? JSON.parse(notesInLocalStorage): []
-
-// Submit event
-theForm.addEventListener("submit", (event) => {
-  // disable form default refresh behaviour
-  event.preventDefault();
-
-  noteObj.push(theField.value.trim())
-  localStorage.setItem('note', JSON.stringify(noteObj))
-
-  addItem(noteObj)
-
-  theField.value = ""
-
-});
-
-function deleteItem(click) {
-  click.parentElement.remove()
+// Model: Note object
+class Note {
+  constructor(text) {
+    this.text = text
+  }
 }
 
-function addItem(noteObj) {
-  let li = `
-      <li class = "my-2">
-        <div>
-          <input class="form-check-input me-1" type="checkbox" /> ${noteObj.length == 0 ? noteObj[noteObj.length + 1] : noteObj[noteObj.length - 1]}
-        </div>
-        <i class = "fas fa-trash-alt" id = "deleteBtn" style = "cursor: pointer" onclick = "deleteItem(this)"></i>
+// View: Handle UI operations
+class UI { 
+  static displayNote() {
+
+    const storedNotes = Store.getNote()
+
+    storedNotes.forEach((note) => UI.addNoteToList(note))
+  }
+
+  static addNoteToList(note) {
+    const theList = document.querySelector('#theList')
+    const li = document.createElement('li')
+
+    const input = document.querySelector('#newItem')
+    li.innerHTML = `
+      <li
+        style = "
+          display: flex; 
+          justify-content: space-between; 
+          align-items: center;
+          margin-bottom: 0.5rem;
+        "
+      >
+        <p class = "mb-0">${note.text}</p>  
+        <i 
+          class = "fas fa-minus-circle delete"
+          style = "cursor: pointer;"
+        >
+        </i>
       </li>
     `
 
-    theList.insertAdjacentHTML('beforeend', li)
+    theList.appendChild(li)
+
+  }
+
+  static removeNoteFromList(elTarget) {
+    if(elTarget.classList.contains('delete')) {
+      elTarget.parentElement.remove()
+    }
+  }
+
+  static clearAllNotes() {
+    const theList = document.querySelector('#theList')
+    while (theList.firstChild) {
+      //The list is LIVE so it will re-index each call
+      theList.removeChild(theList.firstChild);
+    }
+  }
+
+  static resetField() {
+    document.querySelector('#newItem').value = ""
+    document.querySelector('#newItem').focus()
+  }
+
+  static showAlert() {
+    const alert = document.querySelector('.alert')
+
+    // show on UI
+    alert.classList.remove('d-none')
+
+    // remove from UI after 3 sec
+    setTimeout(() => {
+      alert.classList.add('d-none')
+    }, 2000);
+  }
 }
 
-function localStorageItem() {
-  noteObj.forEach(note => {
-    let li = `
-      <li class = "my-2">
-        <div>
-          <input class="form-check-input me-1" type="checkbox" /> ${note}
-        </div>
-        <i class = "fas fa-trash-alt" id = "deleteBtn" style = "cursor: pointer" onclick = "deleteItem(this)"></i>
-      </li>
-    `
+// Storage: Handle storage operations
+class Store {
+  static getNote() {
+    let notes = localStorage.getItem('notes') !== null ? JSON.parse(localStorage.getItem('notes')) : []
 
-    theList.insertAdjacentHTML('beforeend', li)
-  })
+    return notes
+  }
+
+  static addNote(note) {
+    let notes = Store.getNote()
+
+    notes.push(note)
+
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }
+
+  static removeNote(elTarget) {
+    let notes = Store.getNote()
+
+    notes.splice(UI.removeNoteFromList(elTarget), 1)
+
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }
+
+  static clearNotes() {
+    let notes = []
+
+    localStorage.setItem('notes', JSON.stringify(notes))
+  }
 }
 
-localStorageItem()
+// Controller: display notes on app start
+document.addEventListener('DOMContentLoaded', UI.displayNote)
 
+// Controller: add the notes
+document.querySelector('#theForm').addEventListener('submit', (e) => {
+  e.preventDefault()
 
+  let newNote = document.querySelector('#newItem').value
 
+  // Form validation
+  if(newNote !== "") {
+    const myNote = new Note(newNote)
 
+    UI.addNoteToList(myNote)
+
+    Store.addNote(myNote)
+
+    UI.resetField()
+  } else {
+    UI.showAlert()
+  }
+})
+
+// Controller: remove the notes
+document.querySelector('#theList').addEventListener('click', (e) => {
+  UI.removeNoteFromList(e.target)
+  Store.removeNote(e.target)
+})
+
+// Controller: clear all the notes
+document.querySelector('.clearNotes').addEventListener('click', () => {
+  UI.clearAllNotes()
+  Store.clearNotes()
+})

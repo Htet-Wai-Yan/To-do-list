@@ -18,27 +18,25 @@ body {
 }
 
 ul {
-  height: 400px;
+  max-height: 350px;
   list-style: none;
   padding: 0 1em;
   margin: 1em 0;
   overflow-y: auto;
 }
 
-li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* give alert a positive absolute */
-.alert {
-  position: absolute;
-  width: 90%;
-  left: 0.9rem;
-  bottom: 0;
-  z-index: 9999;
-}
 .checkDone {
   text-decoration: line-through;
+}
+
+main {
+  position: relative;
+}
+
+.btn-floating {
+  position: absolute;
+  bottom: 10px; 
+  right: 10px;
+  height: 50px;
+  width: 50px;
 }
