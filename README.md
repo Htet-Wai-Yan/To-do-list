@@ -2,7 +2,7 @@
 
 This is the javaScript basic exercise and about creating the note taking app using vanilla javaScript.
 
-The app functionality are : 
+The app functionalities are : 
 
 * Add the notes to the list
 * Remove the notes from the list
