@@ -16,4 +16,4 @@ The javaScript concepts included in this exercise are :
 * MVC concept
 * Local storage
 
-Inspired by [Book List](https://www.youtube.com/watch?v=JaMCxVWtW58&t=2582s) tutorials from [Traversy Media](https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA).
+Inspired by [Book List](https://www.youtube.com/watch?v=JaMCxVWtW58&t=2582s) tutorial from [Traversy Media](https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA).
