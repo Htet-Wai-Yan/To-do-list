@@ -18,7 +18,6 @@ class UI {
     const theList = document.querySelector('#theList')
     const li = document.createElement('li')
 
-    const input = document.querySelector('#newItem')
     li.innerHTML = `
       <li
         style = "
@@ -81,10 +80,12 @@ class Store {
     return notes
   }
 
-  static addNote(note) {
+  static addNote(myNote) {
     let notes = Store.getNote()
 
-    notes.push(note)
+    notes.push(myNote)
+
+    console.log(notes);
 
     localStorage.setItem('notes', JSON.stringify(notes))
   }
